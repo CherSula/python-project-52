@@ -22,11 +22,12 @@ jobs:
 
     - name: Run tests and generate coverage report
       run: |
-        coverage run -m unittest discover  # Запуск тестов с покрытием
-        coverage xml  # Генерация отчета в формате XML
+        make testcov
     
-    - name: Upload coverage to Code Climate
+    - name: Test & publish code coverage
+      uses: paambaati/codeclimate-action@v5.0.0
+      if: github.ref_name == 'main'
       env:
-        CODECLIMATE_REPO_TOKEN: 'ef7796d5da2e8618880d6a661b4403d7886976f78d9a5caf9a446faed042b71f'
+        CC_TEST_REPORTER_ID: 'ef7796d5da2e8618880d6a661b4403d7886976f78d9a5caf9a446faed042b71f'
         run: |
-        bash <(curl -s https://codeclimate.com/test_reports)
+          bash <(curl -s https://codeclimate.com/test_reports)
