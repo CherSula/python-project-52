@@ -12,3 +12,4 @@ https://python-project-52-s9ue.onrender.com
 ### CodeClimate
 [![Maintainability](https://api.codeclimate.com/v1/badges/d642034d58582e8b6b19/maintainability)](https://codeclimate.com/github/CherSula/python-project-52/maintainability)
 
+[![Test Coverage](https://api.codeclimate.com/v1/badges/d642034d58582e8b6b19/test_coverage)](https://codeclimate.com/github/CherSula/python-project-52/test_coverage)
