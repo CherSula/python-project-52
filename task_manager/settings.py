@@ -15,6 +15,7 @@ import os
 from dotenv import load_dotenv
 from pathlib import Path
 import postgres
+from django.utils.translation import gettext_lazy as _
 
 load_dotenv()
 SECRET_KEY = 'django-insecure-(l5sr*hu$=t-*#n+#3dj$ma^r433sc8yn3zzsag0fk!4bpr^cr'
@@ -105,6 +106,13 @@ WSGI_APPLICATION = 'task_manager.wsgi.application'
 #     ),
 # }
 
+DATABASES = {
+    'default': {
+        'ENGINE': 'django.db.backends.sqlite3',  # или другой движок, например, 'django.db.backends.postgresql'
+        'NAME': BASE_DIR / "db.sqlite3",  # путь к вашей базе данных
+        # Дополнительные параметры, такие как USER, PASSWORD, HOST, PORT, могут быть необходимы для других движков
+    }
+}
 
 # Password validation
 # https://docs.djangoproject.com/en/4.2/ref/settings/#auth-password-validators
@@ -131,7 +139,7 @@ AUTH_PASSWORD_VALIDATORS = [
 # Internationalization
 # https://docs.djangoproject.com/en/4.2/topics/i18n/
 
-LANGUAGE_CODE = 'en-us'
+LANGUAGE_CODE = 'ru'
 
 TIME_ZONE = 'UTC'
 
@@ -141,6 +149,15 @@ USE_L10N = True
 
 USE_TZ = True
 
+
+LANGUAGES = [
+    ('en', _('English')),
+    ('ru', _('Russian')),
+]
+
+LOCALE_PATHS = [
+    os.path.join(BASE_DIR, 'locale'),
+]
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/4.2/howto/static-files/
