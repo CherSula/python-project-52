@@ -6,7 +6,7 @@ from django.utils.translation import gettext_lazy as _
 class User(AbstractUser):
     groups = models.ManyToManyField(
         'auth.Group',
-        related_name='custom_user_set',  # Измените на уникальное имя
+        related_name='custom_user_set',
         blank=True,
         help_text='The groups this user belongs to.',
         verbose_name='groups'
@@ -14,7 +14,7 @@ class User(AbstractUser):
 
     user_permissions = models.ManyToManyField(
         'auth.Permission',
-        related_name='custom_user_permissions_set',  # Измените на уникальное имя
+        related_name='custom_user_permissions_set',
         blank=True,
         help_text='Specific permissions for this user.',
         verbose_name='user permissions'
