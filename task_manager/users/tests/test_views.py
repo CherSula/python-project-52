@@ -117,9 +117,9 @@ class TestUserUpdateView(UserTestCase):
         self.assertEqual(response.status_code, 302)
         self.assertRedirects(response, reverse_lazy('user_list'))
         updated_user = User.objects.get(id=user1.id)
-        self.assertEqual(updated_user.username, 'The_Dinosaur')
-        self.assertEqual(updated_user.first_name, 'Ross')
-        self.assertEqual(updated_user.last_name, 'Geller')
+        self.assertEqual(updated_user.username, 'Sharks')
+        self.assertEqual(updated_user.first_name, 'Chandler')
+        self.assertEqual(updated_user.last_name, 'Bing')
 
     def test_other_user_update_authorized(self):
         user1 = self.user1
