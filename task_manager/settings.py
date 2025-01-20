@@ -14,19 +14,18 @@ import dj_database_url
 import os
 from dotenv import load_dotenv
 from pathlib import Path
-import postgres
 from django.utils.translation import gettext_lazy as _
 
 load_dotenv()
-SECRET_KEY = 'django-insecure-(l5sr*hu$=t-*#n+#3dj$ma^r433sc8yn3zzsag0fk!4bpr^cr'
-DEBUG = True
-DATABASE_URL = 'postgres://svetlana:1303@localhost:5432/task_manager'
+# SECRET_KEY = 'django-insecure-(l5sr*hu$=t-*#n+#3dj$ma^r433sc8yn3zzsag0fk!4bpr^cr'
+# DEBUG = True
+# DATABASE_URL = 'postgres://svetlana:1303@localhost:5432/task_manager'
 
-# SECRET_KEY = os.getenv('SECRET_KEY')
 # DEBUG = os.getenv('DEBUG', False)
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
-
+SECRET_KEY = os.getenv('SECRET_KEY')
+DEBUG = os.getenv('DEBUG', 'False').lower() == 'true'
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/4.2/howto/deployment/checklist/
 
@@ -99,40 +98,40 @@ WSGI_APPLICATION = 'task_manager.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/4.2/ref/settings/#databases
 
-# DATABASES = {
-#     'default': dj_database_url.config(
-#         default=os.getenv('DATABASE_URL'),
-#         conn_max_age=600,
-#     ),
-# }
-
 DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.sqlite3',  # или другой движок, например, 'django.db.backends.postgresql'
-        'NAME': BASE_DIR / "db.sqlite3",  # путь к вашей базе данных
-        # Дополнительные параметры, такие как USER, PASSWORD, HOST, PORT, могут быть необходимы для других движков
-    }
+    'default': dj_database_url.config(
+        default=os.getenv('DATABASE_URL'),
+        conn_max_age=600,
+    ),
 }
+
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.db.backends.sqlite3',  # или другой движок, например, 'django.db.backends.postgresql'
+#         'NAME': BASE_DIR / "db.sqlite3",  # путь к вашей базе данных
+#         # Дополнительные параметры, такие как USER, PASSWORD, HOST, PORT, могут быть необходимы для других движков
+#     }
+# }
 
 # Password validation
 # https://docs.djangoproject.com/en/4.2/ref/settings/#auth-password-validators
 
 AUTH_PASSWORD_VALIDATORS = [
-    {
-        'NAME': 'django.contrib.auth.password_validation.UserAttributeSimilarityValidator',
-    },
+    # {
+    #     'NAME': 'django.contrib.auth.password_validation.UserAttributeSimilarityValidator',
+    # },
     {
         'NAME': 'django.contrib.auth.password_validation.MinimumLengthValidator',
         "OPTIONS": {
             "min_length": 3,
         },
     },
-    {
-        'NAME': 'django.contrib.auth.password_validation.CommonPasswordValidator',
-    },
-    {
-        'NAME': 'django.contrib.auth.password_validation.NumericPasswordValidator',
-    },
+    # {
+    #     'NAME': 'django.contrib.auth.password_validation.CommonPasswordValidator',
+    # },
+    # {
+    #     'NAME': 'django.contrib.auth.password_validation.NumericPasswordValidator',
+    # },
 ]
 
 
@@ -166,6 +165,8 @@ STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 
 STATIC_URL = '/static/'
 STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
+
+AUTH_USER_MODEL = 'users.User'
 
 # This production code might break development mode, so we check whether we're in DEBUG mode
 # if not DEBUG:
