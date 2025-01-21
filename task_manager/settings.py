@@ -17,15 +17,12 @@ from pathlib import Path
 from django.utils.translation import gettext_lazy as _
 
 load_dotenv()
-# SECRET_KEY = 'django-insecure-(l5sr*hu$=t-*#n+#3dj$ma^r433sc8yn3zzsag0fk!4bpr^cr'
-# DEBUG = True
-# DATABASE_URL = 'postgres://svetlana:1303@localhost:5432/task_manager'
 
-# DEBUG = os.getenv('DEBUG', False)
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = os.getenv('SECRET_KEY')
 DEBUG = os.getenv('DEBUG', 'False').lower() == 'true'
+
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/4.2/howto/deployment/checklist/
 
@@ -34,7 +31,6 @@ ALLOWED_HOSTS = [
     'python-project-52-s9ue.onrender.com',
     '127.0.0.1',
 ]
-
 
 # Application definition
 

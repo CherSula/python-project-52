@@ -13,6 +13,7 @@ dependencies = [
     "gunicorn>=23.0.0",
     "postgres>=4.0",
     "psycopg2-binary>=2.9.10",
+    "pytest-django>=4.9.0",
     "python-dotenv>=1.0.1",
     "rollbar>=1.1.1",
     "ruff>=0.9.1",
@@ -24,3 +25,7 @@ dependencies = [
 dev = [
     "ruff>=0.9.1",
 ]
+
+[tool.pytest.ini_options]
+DJANGO_SETTINGS_MODULE = "test.settings"
+python_files = ["test_*.py", "*_test.py", "testing/python/*.py"]
