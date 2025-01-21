@@ -27,5 +27,5 @@ dev = [
 ]
 
 [tool.pytest.ini_options]
-DJANGO_SETTINGS_MODULE = "test.settings"
+DJANGO_SETTINGS_MODULE = "task_manager.settings"
 python_files = ["test_*.py", "*_test.py", "testing/python/*.py"]
