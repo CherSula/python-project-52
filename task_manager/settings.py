@@ -64,7 +64,7 @@ MIDDLEWARE = [
 ]
 
 ROLLBAR = {
-    'access_token': '8353d596dccc440a8ddd6a0a26927257',
+    'access_token': 'f9a7f9da2d6e4220a383b7f7e386f348',
     'environment': 'development' if DEBUG else 'production',
     'code_version': '1.0',
     'root': BASE_DIR,
